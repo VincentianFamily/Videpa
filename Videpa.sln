@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity", "Videpa.Identity\Videpa.Identity.csproj", "{118327F4-75B7-4F51-B032-3D0078235923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity.Tests", "Videpa.Identity.Tests\Videpa.Identity.Tests.csproj", "{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{118327F4-75B7-4F51-B032-3D0078235923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118327F4-75B7-4F51-B032-3D0078235923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118327F4-75B7-4F51-B032-3D0078235923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118327F4-75B7-4F51-B032-3D0078235923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
