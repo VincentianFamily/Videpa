@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity.Api", "Videpa.Identity\Videpa.Identity.Api.csproj", "{118327F4-75B7-4F51-B032-3D0078235923}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity.Api", "Videpa.Identity.Api\Videpa.Identity.Api.csproj", "{118327F4-75B7-4F51-B032-3D0078235923}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity.Logic.Tests", "Videpa.Identity.Tests\Videpa.Identity.Logic.Tests.csproj", "{5B5AB8FE-190A-46DC-A3BB-B01717283EB5}"
 EndProject
