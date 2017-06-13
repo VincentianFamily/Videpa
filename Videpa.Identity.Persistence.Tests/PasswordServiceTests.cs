@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Videpa.Identity.Logic.Services;
 
-namespace Videpa.Identity.Logic.Tests
+namespace Videpa.Identity.Persistence.Tests
 {
     [TestClass]
     public class PasswordServiceTests

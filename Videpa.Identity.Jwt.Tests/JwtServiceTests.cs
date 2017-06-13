@@ -2,10 +2,10 @@
 using System.Security.Claims;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Videpa.Identity.Logic.Tests
+namespace Videpa.Identity.Jwt.Tests
 {
     [TestClass]
-    public class GenerateJwtTokenTests
+    public class JwtServiceTests
     {
         [TestMethod]
         public void GenerateJwt()
@@ -32,11 +32,10 @@ namespace Videpa.Identity.Logic.Tests
 
             var service = new JwtService();
 
-            var jwt = service.GenerateToken(claimsIdentity);
+            var jwt = service.Generate(claimsIdentity);
 
             // Kopier jwt strengen til jwt.io for at se den offentlige del af jwt.
-
-            var claimsPlincipal = service.VerifyJwt(jwt);
+            var claimsPlincipal = service.Consume(jwt);
 
             var nameClaim = claimsPlincipal.Claims.FirstOrDefault(p => p.Type.Equals(nameClaimType));
             var emailClaim = claimsPlincipal.Claims.FirstOrDefault(p => p.Type.Equals(emailClaimType));
@@ -46,9 +45,9 @@ namespace Videpa.Identity.Logic.Tests
             Assert.AreEqual(emailClaim.Value, email);
             Assert.AreEqual(cellphoneClaim.Value, cellphone);
 
-            Assert.IsTrue(claimsPlincipal.IsInRole(userRole));
-            Assert.IsTrue(claimsPlincipal.IsInRole(leaderRole));
-            Assert.IsTrue(claimsPlincipal.IsInRole(adminRole));
+            Assert.IsTrue(claimsPlincipal.HasClaim(p => p.Type == ClaimTypes.Role && p.Value == userRole));
+            Assert.IsTrue(claimsPlincipal.HasClaim(p => p.Type == ClaimTypes.Role && p.Value == leaderRole));
+            Assert.IsTrue(claimsPlincipal.HasClaim(p => p.Type == ClaimTypes.Role && p.Value == adminRole));
         }
     }
 }

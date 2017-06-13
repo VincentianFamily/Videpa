@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BFD64CA-6706-4E27-B98D-28D42EADC929}</ProjectGuid>
+    <ProjectGuid>{3D451056-EF79-4F05-BE55-77A45DDD62DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Videpa.Identity.Logic</RootNamespace>
-    <AssemblyName>Videpa.Identity.Logic</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>Videpa.Identity.Persistence</RootNamespace>
+    <AssemblyName>Videpa.Identity.Persistence</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,19 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ports\IJwtIssuer.cs" />
-    <Compile Include="Interfaces\IPasswordService.cs" />
-    <Compile Include="Ports\IJwtAudience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\UserProfile.cs" />
-    <Compile Include="Services\PasswordService.cs" />
-    <Compile Include="Services\UserProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Videpa.Identity.Logic\Videpa.Identity.Logic.csproj">
+      <Project>{6bfd64ca-6706-4e27-b98d-28d42eadc929}</Project>
+      <Name>Videpa.Identity.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

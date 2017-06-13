@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Videpa.Identity.Logic.Interfaces;
 
-namespace Videpa.Identity.Logic
+namespace Videpa.Identity.Logic.Services
 {
-    public class PasswordService
+    public class PasswordService : IPasswordService
     {
         private const string HashKey = "NissePok";
 
