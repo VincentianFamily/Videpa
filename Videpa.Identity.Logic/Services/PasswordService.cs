@@ -17,18 +17,15 @@ namespace Videpa.Identity.Logic.Services
 
             return saltBytes;
         }
-
-        public byte[] GetPasswordBytes(string password)
+        
+        public string HashPassword(byte[] salt, string password)
         {
-            return Encoding.UTF8.GetBytes(password);
-        }
+            var pwBytes = GetPasswordBytes(password);
 
-        public string HashPassword(byte[] salt, byte[] password)
-        {
             var allBytes = new byte[salt.Length + password.Length];
 
             Buffer.BlockCopy(salt, 0, allBytes, 0, salt.Length);
-            Buffer.BlockCopy(password, 0, allBytes, salt.Length, password.Length);
+            Buffer.BlockCopy(pwBytes, 0, allBytes, salt.Length, password.Length);
 
             var bHashKey = Encoding.UTF8.GetBytes(HashKey);
 
@@ -38,13 +35,17 @@ namespace Videpa.Identity.Logic.Services
                 return Convert.ToBase64String(hash);
             }
         }
-
+        
         public bool VerifyPassword(string attemptedPassword, byte[] salt, string passwordHash)
         {
-            var bAttemptedPassword = GetPasswordBytes(attemptedPassword);
-            var hAttemptedPassword = HashPassword(salt, bAttemptedPassword);
+            var hAttemptedPassword = HashPassword(salt, attemptedPassword);
 
             return hAttemptedPassword == passwordHash;
+        }
+
+        private byte[] GetPasswordBytes(string password)
+        {
+            return Encoding.UTF8.GetBytes(password);
         }
     }
 }

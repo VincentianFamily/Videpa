@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Videpa.Identity.Logic.Services;
 
-namespace Videpa.Identity.Persistence.Tests
+namespace Videpa.Identity.Logic.Tests
 {
     [TestClass]
     public class PasswordServiceTests
@@ -16,7 +16,7 @@ namespace Videpa.Identity.Persistence.Tests
             var password1 = "123456";
             var password2 = password1;
 
-            var password1Hash = service.HashPassword(salt, service.GetPasswordBytes(password1));
+            var password1Hash = service.HashPassword(salt, password1);
 
             var isValid = service.VerifyPassword(password2, salt, password1Hash);
 
@@ -34,7 +34,7 @@ namespace Videpa.Identity.Persistence.Tests
             var password1 = "123456";
             var password2 = password1;
 
-            var password1Hash = service.HashPassword(salt1, service.GetPasswordBytes(password1));
+            var password1Hash = service.HashPassword(salt1, password1);
 
             var isValid = service.VerifyPassword(password2, salt2, password1Hash);
 
@@ -51,7 +51,7 @@ namespace Videpa.Identity.Persistence.Tests
             var password1 = "123456";
             var password2 = "123457";
 
-            var password1Hash = service.HashPassword(salt, service.GetPasswordBytes(password1));
+            var password1Hash = service.HashPassword(salt, password1);
 
             var isValid = service.VerifyPassword(password2, salt, password1Hash);
 

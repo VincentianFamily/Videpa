@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
+using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
-using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Ports;
 
 namespace Videpa.Identity.Logic.Services
@@ -10,11 +9,13 @@ namespace Videpa.Identity.Logic.Services
     {
         private readonly IPasswordService _passwordService;
         private readonly IJwtIssuer _jwtIssuer;
+        private readonly IUserProfileRepository _userProfileRepository;
 
-        public UserProfileService(IPasswordService passwordService, IJwtIssuer jwtIssuer)
+        public UserProfileService(IPasswordService passwordService, IJwtIssuer jwtIssuer, IUserProfileRepository userProfileRepository)
         {
             _passwordService = passwordService;
             _jwtIssuer = jwtIssuer;
+            _userProfileRepository = userProfileRepository;
         }
 
         /// <summary>
@@ -25,16 +26,18 @@ namespace Videpa.Identity.Logic.Services
         /// <returns></returns>
         public string Authenticate(string email, string password)
         {
+            var authEx = new VidepaAuthenticationException("Invalid email or password");
+
             // Find UserProfile based on e-mail - add 
-            var userProfile = new UserProfile();
+            var userProfile = _userProfileRepository.GetUserProfile(email);
 
-            // Match passwords
-            if(!_passwordService.VerifyPassword(password, userProfile.Salt, userProfile.PasswordHash))
-                throw new AuthenticationException();
+            if (userProfile.IsEmpty) 
+                throw authEx;
 
-            // Build and return Jwt
-
-            throw new NotImplementedException();
+            if (!_passwordService.VerifyPassword(password, userProfile.Value.Salt, userProfile.Value.PasswordHash))
+                throw authEx;
+            
+            return _jwtIssuer.Generate(userProfile.Value);
         }
     }
 }

@@ -45,11 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProfileInMemoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Videpa.Core\Videpa.Core.csproj">
+      <Project>{fc2f03ec-9f3f-4e28-bc2e-3ad01572f927}</Project>
+      <Name>Videpa.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Videpa.Identity.Logic\Videpa.Identity.Logic.csproj">
       <Project>{6bfd64ca-6706-4e27-b98d-28d42eadc929}</Project>
       <Name>Videpa.Identity.Logic</Name>
