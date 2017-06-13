@@ -1,4 +1,5 @@
-TODO
-
-- UserProfileService (generate and return JWT)
-- OrganizationMemberships are handled by the Videpa-app - Videpa.Identity is only about who you are - not your memberships and rights!
+Grinds:
+- Persist user profile in azure doc store
+- RefreshToken scheme ... (a token pr. device ??)
+- API endpoints + Simple Injector
+- Validation (port+adapter; https://github.com/JeremySkinner/FluentValidation)
