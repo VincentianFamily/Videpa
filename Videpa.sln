@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Api", "03 Api", "{92F0DB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Common", "01 Common", "{62FB23B6-7CDA-4AEF-B874-680FEE4506C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videpa.Identity.Configuration", "Videpa.Identity.Configuration\Videpa.Identity.Configuration.csproj", "{5EC75FAA-6953-4402-AE61-6EBC36E04943}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{FC2F03EC-9F3F-4E28-BC2E-3AD01572F927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC2F03EC-9F3F-4E28-BC2E-3AD01572F927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC2F03EC-9F3F-4E28-BC2E-3AD01572F927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC75FAA-6953-4402-AE61-6EBC36E04943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC75FAA-6953-4402-AE61-6EBC36E04943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC75FAA-6953-4402-AE61-6EBC36E04943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC75FAA-6953-4402-AE61-6EBC36E04943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{EC527AD6-16F6-48E6-8019-DAD3DB67EC56} = {8B0BD8AE-6F0E-4EAB-80D8-797CFECC5557}
 		{87B64017-D44C-4942-99F0-458AE74A9B48} = {8B0BD8AE-6F0E-4EAB-80D8-797CFECC5557}
 		{92F0DBC8-1CBE-4BE5-AC60-6DF2F81F0A54} = {8B0BD8AE-6F0E-4EAB-80D8-797CFECC5557}
+		{5EC75FAA-6953-4402-AE61-6EBC36E04943} = {7FDE8391-1FFC-43F6-8ABE-5204CF9BFEA5}
 	EndGlobalSection
 EndGlobal

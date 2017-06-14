@@ -1,5 +1,5 @@
 Grinds:
-- Persist user profile in azure doc store
-- RefreshToken scheme ... (a token pr. device ??)
++ Persist user profile in azure doc store
 - API endpoints + Simple Injector
+- RefreshToken scheme ... (a token pr. device ??)
 - Validation (port+adapter; https://github.com/JeremySkinner/FluentValidation)
