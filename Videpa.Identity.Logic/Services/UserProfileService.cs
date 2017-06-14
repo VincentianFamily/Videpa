@@ -1,11 +1,10 @@
-﻿using System.Security.Authentication;
-using Videpa.Identity.Logic.Exceptions;
+﻿using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Ports;
 
 namespace Videpa.Identity.Logic.Services
 {
-    public class UserProfileService
+    public class UserProfileService : IUserProfileService
     {
         private readonly IPasswordService _passwordService;
         private readonly IJwtIssuer _jwtIssuer;

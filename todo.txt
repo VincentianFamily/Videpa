@@ -1,5 +1,12 @@
 Grinds:
 + Persist user profile in azure doc store
-- API endpoints + Simple Injector
+
+- How to handle configuration
+
+- Setup API: endpoints, simple injector, authentication etc
+	- How to handle identity async?
+
+
 - RefreshToken scheme ... (a token pr. device ??)
+
 - Validation (port+adapter; https://github.com/JeremySkinner/FluentValidation)
