@@ -8,8 +8,11 @@ Grinds:
 
 - How to handle configuration in azure?
 
-- RefreshToken scheme ... (a token pr. device ??)
-
+- RefreshToken scheme ... (a token pr. device ??) https://auth0.com/docs/tokens/refresh-token
+	- Draw it up!
+	- If RememberMe = true then set refreshToken in Cookie
+	- If user is unauthorized with refreshToken in Cookie, then login again and issue JWT
+	
 - Validation (port+adapter; https://github.com/JeremySkinner/FluentValidation)
 
 - Draw system landscape
