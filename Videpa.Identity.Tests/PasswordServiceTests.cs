@@ -14,7 +14,7 @@ namespace Videpa.Identity.Logic.Tests
             var salt = service.GenerateSalt();
 
             var password1 = "123456";
-            var password2 = password1;
+            var password2 = "123456";
 
             var password1Hash = service.HashPassword(salt, password1);
 

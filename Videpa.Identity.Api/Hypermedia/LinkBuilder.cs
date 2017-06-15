@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Routing;
-using Videpa.Identity.Api.Hypermedia;
 
-namespace Videpa.Identity.Api.Routing
+namespace Videpa.Identity.Api.Hypermedia
 {
     public class LinkBuilder : ILinkBuilder
     {
@@ -143,11 +142,6 @@ namespace Videpa.Identity.Api.Routing
                 return string.Empty;
 
             return "?" + string.Join("&", _queryStringValues.Select(p => p.Key + "=" + p.Value));
-        }
-
-        Link ILinkBuilder.Build()
-        {
-            throw new NotImplementedException();
         }
     }
 }

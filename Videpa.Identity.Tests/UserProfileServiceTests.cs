@@ -24,11 +24,11 @@ namespace Videpa.Identity.Logic.Tests
 
             repoMock.Setup(p => p.GetUserProfile(email)).Returns(new Maybe<UserProfile>());
 
-            var service = new UserProfileService(new PasswordService(), jwtIssuerMock.Object, repoMock.Object);
+            var service = new UserProfileCommandHandler(new PasswordService(), jwtIssuerMock.Object, repoMock.Object);
 
             try
             {
-                service.Authenticate(email, password);
+                service.Authenticate(new AuthenticateUserProfile {Email = email, Password = password});
             }
             catch (VidepaAuthenticationException)
             {
@@ -59,11 +59,11 @@ namespace Videpa.Identity.Logic.Tests
             repoMock.Setup(p => p.GetUserProfile(email)).Returns(new Maybe<UserProfile>(userProfile)).Verifiable();
             pwMock.Setup(p => p.VerifyPassword(password, userProfile.Salt, userProfile.PasswordHash)).Returns(false).Verifiable();
 
-            var service = new UserProfileService(pwMock.Object, jwtIssuerMock.Object, repoMock.Object);
+            var service = new UserProfileCommandHandler(pwMock.Object, jwtIssuerMock.Object, repoMock.Object);
 
             try
             {
-                service.Authenticate(email, password);
+                service.Authenticate(new AuthenticateUserProfile { Email = email, Password = password });
             }
             catch (VidepaAuthenticationException)
             {
@@ -93,15 +93,15 @@ namespace Videpa.Identity.Logic.Tests
             var repoMock = new Mock<IUserProfileRepository>();
             var pwMock = new Mock<IPasswordService>();
 
-            jwtIssuerMock.Setup(p => p.Generate(userProfile)).Returns(jwtFake).Verifiable();
+            jwtIssuerMock.Setup(p => p.Generate(userProfile)).Returns(new AuthenticatedUserProfile(userProfile) { Jwt = jwtFake }).Verifiable();
             repoMock.Setup(p => p.GetUserProfile(email)).Returns(new Maybe<UserProfile>(userProfile));
             pwMock.Setup(p => p.VerifyPassword(password, userProfile.Salt, userProfile.PasswordHash)).Returns(true).Verifiable();
 
-            var service = new UserProfileService(pwMock.Object, jwtIssuerMock.Object, repoMock.Object);
+            var service = new UserProfileCommandHandler(pwMock.Object, jwtIssuerMock.Object, repoMock.Object);
 
-            var result = service.Authenticate(email, password);
+            var result = service.Authenticate(new AuthenticateUserProfile { Email = email, Password = password });
             
-            Assert.AreEqual(jwtFake, result);
+            Assert.AreEqual(jwtFake, result.Jwt);
 
             jwtIssuerMock.Verify();
             repoMock.Verify();

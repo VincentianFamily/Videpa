@@ -28,7 +28,7 @@ namespace Videpa.Identity.Api.ExceptionHandling.ExceptionResults
             {
                 RequestId = _requestId.ToString(),
                 Message = "Unhandled Exception - please contact our API support with the requestId as reference",
-                // StackTrace = showException ? _exception : null
+                StackTrace = _exception.Message + " " +_exception.StackTrace
             };
 
             var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)

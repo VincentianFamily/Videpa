@@ -7,7 +7,7 @@ namespace Videpa.Identity.Logic.Ports
     {
         string Generate(ClaimsIdentity identity);
 
-        string Generate(UserProfile userProfile);
+        AuthenticatedUserProfile Generate(UserProfile userProfile);
 
     }
 }

@@ -1,7 +1,6 @@
 using System;
-using Videpa.Identity.Api.Hypermedia;
 
-namespace Videpa.Identity.Api.Routing
+namespace Videpa.Identity.Api.Hypermedia
 {
     public interface ILinkBuilder
     {

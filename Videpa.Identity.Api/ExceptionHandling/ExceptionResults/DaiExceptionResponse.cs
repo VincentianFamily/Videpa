@@ -20,6 +20,8 @@ namespace Videpa.Identity.Api.ExceptionHandling.ExceptionResults
         {
             Request = request;
             Exception = exception;
+
+            StatusCode = ExceptionStatusCodeMapper.Map(exception);
         }
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
@@ -30,6 +32,7 @@ namespace Videpa.Identity.Api.ExceptionHandling.ExceptionResults
             {
                 Content = ExceptionResponseHelper.SerializeContent(error), 
                 RequestMessage = Request,
+                
             };
 
             if (Headers != null)

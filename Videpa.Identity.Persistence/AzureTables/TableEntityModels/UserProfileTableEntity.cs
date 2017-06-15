@@ -1,6 +1,7 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using System;
+using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Videpa.Identity.Persistence
+namespace Videpa.Identity.Persistence.AzureTables.TableEntityModels
 {
     internal class UserProfileTableEntity : TableEntity
     {
@@ -13,6 +14,7 @@ namespace Videpa.Identity.Persistence
             Email = email;
         }
 
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Cellphone { get; set; }
         public string Email { get; set; }

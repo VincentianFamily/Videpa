@@ -1,12 +1,15 @@
 Grinds:
-+ Persist user profile in azure doc store
++ Persist user profiles in azure doc store
++ Setup API: endpoints, simple injector, authentication etc
 
-- How to handle configuration
+- CommandHandler + Tests
 
-- Setup API: endpoints, simple injector, authentication etc
-	- How to handle identity async?
+- Persist user profiles in Sql (need to query on email and id)
 
+- How to handle configuration in azure?
 
 - RefreshToken scheme ... (a token pr. device ??)
 
 - Validation (port+adapter; https://github.com/JeremySkinner/FluentValidation)
+
+- Draw system landscape

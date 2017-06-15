@@ -1,11 +1,17 @@
-﻿using Videpa.Core;
+﻿using System;
+using Videpa.Core;
 using Videpa.Identity.Logic.Models;
 
 namespace Videpa.Identity.Logic.Ports
 {
-    public interface IUserProfileRepository
+    public interface IUserProfileRepository : IUserProfileQueries
+    {
+        void AddUserProfile(CreateUserProfile createUserProfile);
+    }
+
+    public interface IUserProfileQueries
     {
         Maybe<UserProfile> GetUserProfile(string email);
-        void AddUserProfile(CreateUserProfile createUserProfile);
+        Maybe<UserProfile> GetUserProfile(Guid userId);
     }
 }

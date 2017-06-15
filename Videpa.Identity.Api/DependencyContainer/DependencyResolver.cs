@@ -1,11 +1,12 @@
 ﻿using System;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
+using Videpa.Identity.Configuration;
 using Videpa.Identity.Jwt;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Ports;
 using Videpa.Identity.Logic.Services;
-using Videpa.Identity.Persistence;
+using Videpa.Identity.Persistence.InMemory;
 
 namespace Videpa.Identity.Api.DependencyContainer
 {
@@ -23,15 +24,19 @@ namespace Videpa.Identity.Api.DependencyContainer
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
-            container.Register<IPasswordService, PasswordService>(Lifestyle.Scoped);
+            // Singletons
+            container.Register<IPasswordService, PasswordService>(Lifestyle.Singleton);
 
+            // Scoped
             container.Register<IJwtIssuer, JwtService>(Lifestyle.Scoped);
             container.Register<IJwtAudience, JwtService>(Lifestyle.Scoped);
 
             container.Register<IUserProfileRepository, UserProfileInMemoryRepository>(Lifestyle.Scoped);
+            container.Register<IUserProfileQueries, UserProfileInMemoryRepository>(Lifestyle.Scoped);
             // container.Register<IUserProfileRepository, UserProfileAzureRepository>(Lifestyle.Scoped);
 
-            container.Register<IUserProfileService, UserProfileService>(Lifestyle.Scoped);
+            container.Register<IUserProfileCommandHandler, UserProfileCommandHandler>(Lifestyle.Scoped);
+            container.Register<IConfigurationManager, AppSettingsConfigurationManager>(Lifestyle.Scoped);
 
             container.Verify();
 

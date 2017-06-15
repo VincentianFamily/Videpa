@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Services;
+using Videpa.Identity.Persistence.AzureTables;
 
 namespace Videpa.Identity.Persistence.Tests
 {
@@ -45,6 +46,7 @@ namespace Videpa.Identity.Persistence.Tests
             var maybeUserProfile = _repo.GetUserProfile(email);
 
             Assert.IsTrue(maybeUserProfile.HasValue);
+            Assert.AreNotEqual(Guid.Empty, maybeUserProfile.Value.Id);
         }
 
         [TestMethod]

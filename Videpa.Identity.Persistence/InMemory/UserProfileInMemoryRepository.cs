@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Videpa.Core;
 using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Ports;
 
-namespace Videpa.Identity.Persistence
+namespace Videpa.Identity.Persistence.InMemory
 {
     public class UserProfileInMemoryRepository : IUserProfileRepository
     {
@@ -22,17 +24,23 @@ namespace Videpa.Identity.Persistence
 
             _userProfiles.Add(email, new UserProfile
             {
-                Salt = _passwordService.GenerateSalt(),
+                Salt = salt,
                 PasswordHash = hashedPassword,
                 Email = email,
                 Name = "Vincent de Paul",
-                Cellphone = "42480481"
+                Cellphone = "42480481",
+                Id = Guid.Parse("73860982-022c-442d-b814-57c99a9812bc")
             });
         }
 
         public Maybe<UserProfile> GetUserProfile(string email)
         {
             return new Maybe<UserProfile>(_userProfiles.GetValueOrDefault(email));
+        }
+
+        public Maybe<UserProfile> GetUserProfile(Guid userId)
+        {
+            return new Maybe<UserProfile>(_userProfiles.Values.SingleOrDefault(p => p.Id == userId));
         }
 
         public void AddUserProfile(CreateUserProfile createUserProfile)
@@ -45,6 +53,7 @@ namespace Videpa.Identity.Persistence
 
             var userProfile = new UserProfile
             {
+                Id = Guid.NewGuid(),
                 Email = createUserProfile.Email,
                 Cellphone = createUserProfile.Cellphone,
                 Name = createUserProfile.Name,

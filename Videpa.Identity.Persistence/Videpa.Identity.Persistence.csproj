@@ -73,9 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserProfileAzureRepository.cs" />
-    <Compile Include="UserProfileInMemoryRepository.cs" />
-    <Compile Include="TableEntityModels\UserProfileTableEntity.cs" />
+    <Compile Include="AzureTables\UserProfileAzureRepository.cs" />
+    <Compile Include="InMemory\UserProfileInMemoryRepository.cs" />
+    <Compile Include="AzureTables\TableEntityModels\UserProfileTableEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -90,6 +90,9 @@
       <Project>{6bfd64ca-6706-4e27-b98d-28d42eadc929}</Project>
       <Name>Videpa.Identity.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AzureSql\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

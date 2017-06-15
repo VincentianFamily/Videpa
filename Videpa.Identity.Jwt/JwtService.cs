@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Dynamic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
-using Videpa.Identity.Logic;
 using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Ports;
 
@@ -44,19 +42,19 @@ namespace Videpa.Identity.Jwt
             return tokenString;
         }
 
-        public string Generate(UserProfile userProfile)
+        public AuthenticatedUserProfile Generate(UserProfile userProfile)
         {
             var claimsIdentity = new ClaimsIdentity();
 
+            claimsIdentity.AddClaim(new Claim(VidepaClaims.Id, userProfile.Id.ToString()));
             claimsIdentity.AddClaim(new Claim(VidepaClaims.Name, userProfile.Name));
             claimsIdentity.AddClaim(new Claim(VidepaClaims.Email, userProfile.Email));
             claimsIdentity.AddClaim(new Claim(VidepaClaims.Cellphone, userProfile.Cellphone));
-
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, VidepaRoles.Volunteer));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, VidepaRoles.Organizer));
-            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, VidepaRoles.Leader));
-
-            return Generate(claimsIdentity);
+            
+            return new AuthenticatedUserProfile(userProfile)
+            {
+                Jwt = Generate(claimsIdentity)
+            };
         }
 
         public ClaimsIdentity Consume(string jwt)
@@ -73,7 +71,9 @@ namespace Videpa.Identity.Jwt
                 {
                     IssuerSigningKeys = new[] { signingKey },
                     ValidIssuer = ValidIssuer,
-                    ValidAudience = ValidAudience
+                    ValidateIssuer = true,
+                    ValidAudience = ValidAudience,
+                    ValidateAudience = true
                 };
 
                 SecurityToken securityToken;
@@ -83,8 +83,7 @@ namespace Videpa.Identity.Jwt
 
                 var identity = principal.Identity as ClaimsIdentity;
 
-                if (identity != null)
-                    identity.AddClaim(new Claim("jwt", jwt));
+                identity?.AddClaim(new Claim("jwt", jwt));
 
                 return identity;
             }
@@ -97,24 +96,5 @@ namespace Videpa.Identity.Jwt
                 throw ex;
             }
         }
-    }
-
-    public static class VidepaClaims
-    {
-        public const string Name = "x-name";
-        public const string Email = "x-email";
-        public const string Cellphone = "x-cellphone";
-    }
-
-    public static class VidepaRoles
-    {
-        public const string Volunteer = "volunteer";
-        public const string Organizer = "organizer";
-        public const string Leader = "leader";
-
-        /// <summary>
-        /// Videpa Administrator
-        /// </summary>
-        public const string Vince = "vincent-de-paul";
     }
 }

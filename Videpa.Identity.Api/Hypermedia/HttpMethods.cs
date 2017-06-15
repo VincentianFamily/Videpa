@@ -1,4 +1,4 @@
-﻿namespace Videpa.Identity.Api.Routing
+﻿namespace Videpa.Identity.Api.Hypermedia
 {
     public static class HttpMethods
     {

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Videpa.Core;
@@ -11,8 +6,9 @@ using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Ports;
+using Videpa.Identity.Persistence.AzureTables.TableEntityModels;
 
-namespace Videpa.Identity.Persistence
+namespace Videpa.Identity.Persistence.AzureTables
 {
     public class UserProfileAzureRepository : IUserProfileRepository
     {
@@ -36,6 +32,11 @@ namespace Videpa.Identity.Persistence
                 return new Maybe<UserProfile>();
 
             return new Maybe<UserProfile>(Map(entity));
+        }
+
+        public Maybe<UserProfile> GetUserProfile(Guid userId)
+        {
+            throw new NotImplementedException();
         }
 
         public void DeleteUserProfile(string email)
@@ -66,7 +67,8 @@ namespace Videpa.Identity.Persistence
                 Cellphone = createUserProfile.Cellphone,
                 Name = createUserProfile.Name,
                 Salt = salt,
-                PasswordHash = pw
+                PasswordHash = pw,
+                Id = Guid.NewGuid()
             };
 
             var insertOperation = TableOperation.Insert(userProfile);
@@ -101,7 +103,8 @@ namespace Videpa.Identity.Persistence
                 Email = entity.Email,
                 Salt = entity.Salt,
                 Name = entity.Name,
-                Cellphone = entity.Cellphone
+                Cellphone = entity.Cellphone,
+                Id = entity.Id
             };
         }
 
@@ -112,7 +115,8 @@ namespace Videpa.Identity.Persistence
                 PasswordHash = model.PasswordHash,
                 Salt = model.Salt,
                 Name = model.Name,
-                Cellphone = model.Cellphone
+                Cellphone = model.Cellphone,
+                Id = model.Id
             };
         }
     }

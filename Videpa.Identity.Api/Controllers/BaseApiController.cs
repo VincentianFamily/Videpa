@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using Videpa.Identity.Api.Hypermedia;
-using Videpa.Identity.Api.Routing;
 using Videpa.Identity.Api.ViewModels;
 
 namespace Videpa.Identity.Api.Controllers
 {
     public abstract class BaseApiController : ApiController
     {
+        public IRouteFactory RouteFactory
+        {
+            get { return new RouteFactory(Url); }
+        }
+
         protected IHttpActionResult NoContent()
         {
             return new NoContentResult(Request);

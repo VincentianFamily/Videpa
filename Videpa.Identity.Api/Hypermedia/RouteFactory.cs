@@ -1,6 +1,6 @@
 using System.Web.Http.Routing;
 
-namespace Videpa.Identity.Api.Routing
+namespace Videpa.Identity.Api.Hypermedia
 {
     public class RouteFactory : IRouteFactory
     {
