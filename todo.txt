@@ -2,6 +2,8 @@ Grinds:
 + Persist user profiles in azure doc store
 + Setup API: endpoints, simple injector, authentication etc
 
+- Cookie login etc. https://weblog.west-wind.com/posts/2015/Apr/29/Adding-minimal-OWIN-Identity-Authentication-to-an-Existing-ASPNET-MVC-Application#SigninginandOut
+
 - CommandHandler + Tests
 
 - Persist user profiles in Sql (need to query on email and id)
