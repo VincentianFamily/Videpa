@@ -30,11 +30,13 @@ namespace Videpa.Identity.Api.DependencyContainer
             // Scoped
             container.Register<IJwtIssuer, JwtService>(Lifestyle.Scoped);
             container.Register<IJwtAudience, JwtService>(Lifestyle.Scoped);
+            container.Register<ICookieAuthService, OwinCookieAuthService>(Lifestyle.Scoped);
+            container.Register<IClaimsIdentityBuilder, ClaimsIdentityBuilder>(Lifestyle.Scoped);
 
             container.Register<IUserProfileRepository, UserProfileInMemoryRepository>(Lifestyle.Scoped);
             container.Register<IUserProfileQueries, UserProfileInMemoryRepository>(Lifestyle.Scoped);
             // container.Register<IUserProfileRepository, UserProfileAzureRepository>(Lifestyle.Scoped);
-
+            
             container.Register<IUserProfileCommandHandler, UserProfileCommandHandler>(Lifestyle.Scoped);
             container.Register<IConfigurationManager, AppSettingsConfigurationManager>(Lifestyle.Scoped);
 

@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
 
 namespace Videpa.Identity.Logic.Ports
@@ -7,7 +8,7 @@ namespace Videpa.Identity.Logic.Ports
     {
         string Generate(ClaimsIdentity identity);
 
-        AuthenticatedUserProfile Generate(UserProfile userProfile);
+        AuthenticatedUserProfile Generate(UserProfile userProfile, IClaimsIdentityBuilder claimsIdentityBuilder);
 
     }
 }

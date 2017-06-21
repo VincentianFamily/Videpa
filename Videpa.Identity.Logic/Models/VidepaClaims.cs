@@ -1,4 +1,4 @@
-﻿namespace Videpa.Identity.Jwt
+﻿namespace Videpa.Identity.Logic.Models
 {
     public static class VidepaClaims
     {

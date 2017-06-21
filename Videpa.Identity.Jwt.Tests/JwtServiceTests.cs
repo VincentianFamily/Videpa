@@ -30,6 +30,8 @@ namespace Videpa.Identity.Jwt.Tests
             claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, leaderRole));
             claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, adminRole));
 
+
+
             var service = new JwtService();
 
             var jwt = service.Generate(claimsIdentity);

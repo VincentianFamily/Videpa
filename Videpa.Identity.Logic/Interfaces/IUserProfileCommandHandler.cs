@@ -1,5 +1,6 @@
 ﻿using System;
 using Videpa.Identity.Logic.Models;
+using Videpa.Identity.Logic.Models.Commands;
 
 namespace Videpa.Identity.Logic.Interfaces
 {

@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
+using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
 using Videpa.Identity.Logic.Ports;
 
@@ -15,7 +16,7 @@ namespace Videpa.Identity.Jwt
         private const string ValidIssuer = "https://idp.videpa.com";
         private const string ValidAudience = "https://www.videpa.com";
         private const int JwtDurationInMinutes = 120;
-
+        
         public string Generate(ClaimsIdentity identity)
         {
             var privateXml = Uri.UnescapeDataString(PrivateKey);
@@ -41,16 +42,11 @@ namespace Videpa.Identity.Jwt
             var tokenString = tokenHandler.WriteToken(token);
             return tokenString;
         }
-
-        public AuthenticatedUserProfile Generate(UserProfile userProfile)
+        
+        public AuthenticatedUserProfile Generate(UserProfile userProfile, IClaimsIdentityBuilder claimsIdentityBuilder)
         {
-            var claimsIdentity = new ClaimsIdentity();
+            var claimsIdentity = claimsIdentityBuilder.BuildIdentity(userProfile);
 
-            claimsIdentity.AddClaim(new Claim(VidepaClaims.Id, userProfile.Id.ToString()));
-            claimsIdentity.AddClaim(new Claim(VidepaClaims.Name, userProfile.Name));
-            claimsIdentity.AddClaim(new Claim(VidepaClaims.Email, userProfile.Email));
-            claimsIdentity.AddClaim(new Claim(VidepaClaims.Cellphone, userProfile.Cellphone));
-            
             return new AuthenticatedUserProfile(userProfile)
             {
                 Jwt = Generate(claimsIdentity)

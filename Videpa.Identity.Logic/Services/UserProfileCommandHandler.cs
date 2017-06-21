@@ -2,6 +2,7 @@
 using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
+using Videpa.Identity.Logic.Models.Commands;
 using Videpa.Identity.Logic.Ports;
 
 namespace Videpa.Identity.Logic.Services
@@ -37,7 +38,7 @@ namespace Videpa.Identity.Logic.Services
             if (!_passwordService.VerifyPassword(authenticate.Password, userProfile.Value.Salt, userProfile.Value.PasswordHash))
                 throw authEx;
 
-            return _jwtIssuer.Generate(userProfile.Value);
+            return _jwtIssuer.Generate(userProfile.Value, new ClaimsIdentityBuilder());
         }
 
         public AuthenticatedUserProfile Create(CreateUserProfile cmd)
@@ -48,7 +49,7 @@ namespace Videpa.Identity.Logic.Services
             if (userProfile.IsEmpty)
                 throw new Exception("User profile was not created");
 
-            return _jwtIssuer.Generate(userProfile.Value);
+            return _jwtIssuer.Generate(userProfile.Value, new ClaimsIdentityBuilder());
         }
 
         public AuthenticatedUserProfile Update(Guid userId, UpdateUserProfile cmd)

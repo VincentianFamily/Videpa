@@ -3,6 +3,7 @@ using System.Web.Http.Controllers;
 using Videpa.Identity.Api.Hypermedia;
 using Videpa.Identity.Jwt;
 using Videpa.Identity.Logic.Exceptions;
+using Videpa.Identity.Logic.Models;
 
 namespace Videpa.Identity.Api.Filters
 {

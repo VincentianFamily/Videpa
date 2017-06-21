@@ -5,6 +5,7 @@ using Videpa.Identity.Api.ViewModels;
 using Videpa.Identity.Logic.Exceptions;
 using Videpa.Identity.Logic.Interfaces;
 using Videpa.Identity.Logic.Models;
+using Videpa.Identity.Logic.Models.Commands;
 using Videpa.Identity.Logic.Ports;
 
 namespace Videpa.Identity.Api.Controllers

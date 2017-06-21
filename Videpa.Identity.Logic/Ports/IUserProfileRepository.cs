@@ -1,6 +1,7 @@
 ﻿using System;
 using Videpa.Core;
 using Videpa.Identity.Logic.Models;
+using Videpa.Identity.Logic.Models.Commands;
 
 namespace Videpa.Identity.Logic.Ports
 {

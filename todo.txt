@@ -3,6 +3,9 @@ Grinds:
 + Setup API: endpoints, simple injector, authentication etc
 
 - Cookie login etc. https://weblog.west-wind.com/posts/2015/Apr/29/Adding-minimal-OWIN-Identity-Authentication-to-an-Existing-ASPNET-MVC-Application#SigninginandOut
+- API tests
+	- Dependency Resolver!
+
 
 - CommandHandler + Tests
 

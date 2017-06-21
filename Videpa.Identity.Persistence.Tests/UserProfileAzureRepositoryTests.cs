@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Videpa.Identity.Logic.Models;
+using Videpa.Identity.Logic.Models.Commands;
 using Videpa.Identity.Logic.Services;
 using Videpa.Identity.Persistence.AzureTables;
 
